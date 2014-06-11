@@ -382,7 +382,7 @@
 	
 	NSMutableString *randStr = [NSMutableString string];
 	for(int i = 0; i < 10; i++) {
-		int r = arc4random() % 62;
+		int r = arc4random_uniform(62);
 		if(r <= 9)
 			[randStr appendFormat:@"%i",r];
 		else if(r <= 35)
