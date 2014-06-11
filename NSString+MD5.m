@@ -6,6 +6,7 @@
 //
 
 #import "NSString+MD5.h"
+#import <CommonCrypto/CommonCrypto.h>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -15,7 +16,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)md5 {
 	NSData *md5data = [self dataUsingEncoding:NSUTF8StringEncoding];
-	unsigned char *digest = MD5([md5data bytes], [md5data length], NULL);
+	unsigned char *digest = CC_MD5([md5data bytes], [md5data length], NULL);
 	NSString *digestStr = [NSString stringWithFormat: @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
 						   digest[0], digest[1], 
 						   digest[2], digest[3],
